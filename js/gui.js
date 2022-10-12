@@ -5,9 +5,13 @@ let signInDiv = document.getElementById('sign-in-div');
 let signUpDiv = document.getElementById('sign-up-div');
 let signInLink = document.getElementById('sign-in-link');
 let signUpLink = document.getElementById('sign-up-link');
+let continueBtn = document.getElementById("continue");
 
 // Sign In Link Clicked
 signInLink.addEventListener('click', displaySignIn);
+
+// Continue Btn Clicked
+continueBtn.addEventListener('click', displaySignIn);
 
 function displaySignIn() {
   signUpDiv.style.display = 'none';
@@ -21,3 +25,4 @@ function displaySignUp() {
   signInDiv.style.display = 'none';
   signUpDiv.style.display = 'block';
 }
+

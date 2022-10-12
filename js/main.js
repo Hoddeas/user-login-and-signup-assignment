@@ -14,6 +14,8 @@ function signUpHandler() {
   let username = document.getElementById("sign-up-username").value;
   let password = document.getElementById("sign-up-password").value;
   let confirmPassword = document.getElementById("confirm-password").value;
+  let modal = document.getElementById("signedup-modal");
+  let continueBtn = document.getElementById("continue");
   if (username === "" || password === "" || confirmPassword === "") {
     document.getElementById("error-message").innerHTML = "Please fill all empty blanks.";
   } else if (inUse(username) === true) {
@@ -27,15 +29,20 @@ function signUpHandler() {
     saveUsers();
     document.getElementById("error-message").innerHTML = "";
     clearInputs();
+    modal.style.display = "block";
   }
-
+  // Hide Modal
+  continueBtn.addEventListener('click', hideModal);
 }
+
 
 // SIGN IN BTN CLICKED
 signInBtn.addEventListener('click', signInHandler);
 
 function signInHandler() {
-  console.log('Sign In Btn Clicked');
+  let username = document.getElementById("sign-up-username").value;
+  let password = document.getElementById("sign-up-password").value;
+  if
 }
 
 // HELPER FUNCTIONS
@@ -62,7 +69,7 @@ function loadUsers() {
 // Check to see if username already exists
 function inUse(username) {
   for (i = 0; i < users.length; i++) {
-    if (username === users[i].username) {
+    if (username.toLowerCase() === users[i].username.toLowerCase()) {
       return true;
     }
   }
@@ -74,4 +81,10 @@ function clearInputs() {
   document.getElementById("sign-up-username").value = "";
   document.getElementById("sign-up-password").value = "";
   document.getElementById("confirm-password").value = "";
+}
+
+// Hide Modal
+function hideModal() {
+  let modal = document.getElementById("signedup-modal");
+  modal.style.display = "none";
 }
