@@ -9,6 +9,7 @@ let continueBtn = document.getElementById("continue");
 
 // Sign In Link Clicked
 signInLink.addEventListener('click', displaySignIn);
+clearInputs();
 
 // Continue Btn Clicked
 continueBtn.addEventListener('click', displaySignIn);
@@ -26,3 +27,9 @@ function displaySignUp() {
   signUpDiv.style.display = 'block';
 }
 
+// Clear input boxes
+function clearInputs() {
+  document.getElementById("sign-up-username").value = "";
+  document.getElementById("sign-up-password").value = "";
+  document.getElementById("confirm-password").value = "";
+}

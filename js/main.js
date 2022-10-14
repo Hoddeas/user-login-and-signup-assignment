@@ -40,9 +40,19 @@ function signUpHandler() {
 signInBtn.addEventListener('click', signInHandler);
 
 function signInHandler() {
-  let username = document.getElementById("sign-up-username").value;
-  let password = document.getElementById("sign-up-password").value;
-  if
+  let username = document.getElementById("sign-in-username").value;
+  let password = document.getElementById("sign-in-password").value;
+  if (username === "" || password === "") {
+    alert("please fill the blanks");
+  } else if (inUse(username) === false) {
+    alert("wrong username");
+  } else {
+    if (checkPassword(password) === false) {
+      alert("wrong password");
+    } else {
+      alert("signed in");
+    }
+  }
 }
 
 // HELPER FUNCTIONS
@@ -72,6 +82,16 @@ function inUse(username) {
     if (username.toLowerCase() === users[i].username.toLowerCase()) {
       return true;
     }
+  }
+  return false;
+}
+
+// Check if password is correct
+function checkPassword(password) {
+  for (i = 0; i < users.length; i++) {
+    if (password === users[i].password) {
+      return true;
+    } 
   }
   return false;
 }
