@@ -9,7 +9,6 @@ let continueBtn = document.getElementById("continue");
 
 // Sign In Link Clicked
 signInLink.addEventListener('click', displaySignIn);
-clearInputs();
 
 // Continue Btn Clicked
 continueBtn.addEventListener('click', displaySignIn);
@@ -17,6 +16,7 @@ continueBtn.addEventListener('click', displaySignIn);
 function displaySignIn() {
   signUpDiv.style.display = 'none';
   signInDiv.style.display = 'block';
+  clearInputs();
 }
 
 // Sign Up Link Clicked
@@ -25,11 +25,6 @@ signUpLink.addEventListener('click', displaySignUp);
 function displaySignUp() {
   signInDiv.style.display = 'none';
   signUpDiv.style.display = 'block';
+  clearInputs();
 }
 
-// Clear input boxes
-function clearInputs() {
-  document.getElementById("sign-up-username").value = "";
-  document.getElementById("sign-up-password").value = "";
-  document.getElementById("confirm-password").value = "";
-}

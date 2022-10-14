@@ -17,17 +17,17 @@ function signUpHandler() {
   let modal = document.getElementById("signedup-modal");
   let continueBtn = document.getElementById("continue");
   if (username === "" || password === "" || confirmPassword === "") {
-    document.getElementById("error-message").innerHTML = "Please fill all empty blanks.";
+    document.getElementById("error-message-signup").innerHTML = "Please fill all empty blanks.";
   } else if (inUse(username) === true) {
-    document.getElementById("error-message").innerHTML = "This username already exists.";
+    document.getElementById("error-message-signup").innerHTML = "This username already exists.";
   } else if (password.length < 8) {
-    document.getElementById("error-message").innerHTML = "Password length must be at least 8 characters.";
+    document.getElementById("error-message-signup").innerHTML = "Password length must be at least 8 characters.";
   } else if (password != confirmPassword) {
-    document.getElementById("error-message").innerHTML = "Passwords do not match. Please try again."
+    document.getElementById("error-message-signup").innerHTML = "Passwords do not match. Please try again."
   } else {
     users.push(newUser(username, password));
     saveUsers();
-    document.getElementById("error-message").innerHTML = "";
+    document.getElementById("error-message-signup").innerHTML = "";
     clearInputs();
     modal.style.display = "block";
   }
@@ -43,14 +43,16 @@ function signInHandler() {
   let username = document.getElementById("sign-in-username").value;
   let password = document.getElementById("sign-in-password").value;
   if (username === "" || password === "") {
-    alert("please fill the blanks");
+    document.getElementById("error-message-signin").innerHTML = "Please fill all empty blanks."
   } else if (inUse(username) === false) {
-    alert("wrong username");
+    document.getElementById("error-message-signin").innerHTML = "Username does not exist. Please try again."
   } else {
     if (checkPassword(password) === false) {
-      alert("wrong password");
+      document.getElementById("error-message-signin").innerHTML = "Password is incorrect. Please try again."
     } else {
-      alert("signed in");
+      alert("Sign In Successful. Redirecting...");
+      document.getElementById("error-message-signin").innerHTML = "";
+      window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     }
   }
 }
@@ -101,6 +103,10 @@ function clearInputs() {
   document.getElementById("sign-up-username").value = "";
   document.getElementById("sign-up-password").value = "";
   document.getElementById("confirm-password").value = "";
+  document.getElementById("sign-in-username").value = "";
+  document.getElementById("sign-in-password").value = "";
+  document.getElementById("error-message-signup").innerHTML = "";
+  document.getElementById("error-message-signin").innerHTML = "";
 }
 
 // Hide Modal
